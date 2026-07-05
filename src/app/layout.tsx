@@ -1,38 +1,54 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Space_Grotesk, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
+import Nav from './components/Nav'
+import Footer from './components/Footer'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-space-grotesk',
+  display: 'swap',
+})
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-jetbrains-mono',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
-  title: 'Soong Shao Zhi | Full Stack Developer',
-  description: 'Personal portfolio of Soong Shao Zhi - Full Stack Developer, App Developer, and Innovator specializing in React, Next.js, and modern web technologies.',
-  keywords: ['Full Stack Developer', 'React', 'Next.js', 'TypeScript', 'Portfolio', 'Web Developer'],
+  metadataBase: new URL('https://soongshaozhi.com'),
+  title: 'Shao Zhi — Applied ML & AI Infra',
+  description:
+    'Shao Zhi works on AI agents, inference, and model performance. Third-year Computer Science at NUS; incoming Applied ML Engineer at Fireworks AI.',
+  keywords: ['Shao Zhi', 'Applied ML', 'AI Infrastructure', 'Inference', 'NUS', 'Fireworks AI', 'Machine Learning'],
   authors: [{ name: 'Soong Shao Zhi' }],
   creator: 'Soong Shao Zhi',
-  publisher: 'Soong Shao Zhi',
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
   openGraph: {
-    title: 'Soong Shao Zhi | Full Stack Developer',
-    description: 'Personal portfolio of Soong Shao Zhi - Full Stack Developer, App Developer, and Innovator',
+    title: 'Shao Zhi — Applied ML & AI Infra',
+    description: 'AI agents, inference, and model performance. Incoming Applied ML Engineer at Fireworks AI.',
     url: 'https://soongshaozhi.com',
-    siteName: 'Soong Shao Zhi Portfolio',
+    siteName: 'Shao Zhi',
     type: 'website',
+    locale: 'en_SG',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Soong Shao Zhi | Full Stack Developer',
-    description: 'Personal portfolio of Soong Shao Zhi - Full Stack Developer, App Developer, and Innovator',
+    title: 'Shao Zhi — Applied ML & AI Infra',
+    description: 'AI agents, inference, and model performance. Incoming Applied ML Engineer at Fireworks AI.',
   },
 }
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
+  themeColor: '#ffffff',
 }
 
 export default function RootLayout({
@@ -41,27 +57,15 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              // Fix scroll position on page load
-              if (typeof window !== 'undefined') {
-                window.addEventListener('beforeunload', () => {
-                  window.scrollTo(0, 0);
-                });
-                
-                // Ensure page starts at top
-                window.history.scrollRestoration = 'manual';
-              }
-            `,
-          }}
-        />
-      </head>
-      <body className={`${inter.className} bg-primary text-text-primary antialiased`}>
-        {children}
+    <html
+      lang="en"
+      className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
+    >
+      <body className="bg-paper font-sans text-ink antialiased">
+        <Nav />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   )
-} 
+}

@@ -1,5 +1,5 @@
 {
-  "name": "personal-portfolio",
+  "name": "shaozhi-portfolio",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,19 +9,25 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@google/generative-ai": "^0.24.1",
     "@radix-ui/react-dialog": "^1.1.14",
     "@radix-ui/react-slot": "^1.2.3",
+    "@tailwindcss/typography": "^0.5.20",
     "@types/nodemailer": "^6.4.17",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^11.3.19",
+    "gray-matter": "^4.0.3",
     "lucide-react": "^0.408.0",
     "next": "14.2.5",
+    "next-mdx-remote": "^6.0.0",
     "nodemailer": "^7.0.4",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^4.12.0",
+    "reading-time": "^1.5.0",
+    "rehype-pretty-code": "^0.14.3",
+    "remark-gfm": "^4.0.1",
+    "shiki": "^4.3.1",
     "simple-icons": "^15.5.0",
     "tailwind-merge": "^2.4.0"
   },
