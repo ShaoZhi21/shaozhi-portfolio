@@ -37,7 +37,8 @@ Other scripts: `npm run build` (production build), `npm start` (serve the build)
 content/writeups/*.mdx     ← blog & interview posts (add files here)
 src/
 ├─ app/
-│  ├─ components/           ← Nav, Hero, About, Experience, Projects, … + ui primitives
+│  ├─ components/           ← Nav, Hero, About, Background, Projects, Skills,
+│  │                          Hackathons, WriteupsPreview, Contact, Footer + ui primitives
 │  ├─ writeups/             ← /writeups index and /writeups/[slug] post pages
 │  ├─ api/contact/          ← Nodemailer contact endpoint
 │  ├─ layout.tsx            ← fonts, metadata, Nav + Footer
@@ -53,12 +54,16 @@ src/
 
 **Almost everything is in [`src/lib/data.ts`](src/lib/data.ts)** — no component code required:
 
-- `profile` — name, headline, subhead, résumé link, the `● Currently` status line
-- `now` — the "Now" list (keep this fresh)
+- `profile` — name, headline, subhead, résumé link, and the `● Currently` status line
 - `about` — bio paragraphs, focus areas, languages
-- `experience` — roles (set `current: true` / `upcoming: true` for the badges)
-- `projects` — omit `image` to get a clean placeholder tile; add `award` **or** `event` for the badge
-- `skills`, `education`, `highlights`
+- `reading` — the "Currently reading" list (`title`, `source`, `note`, `url`)
+- `travel` — the "Off the clock" photos (`src`, `caption`, `alt`)
+- `experience` — roles with logos (set `current` / `upcoming` for the badges)
+- `education` — degree, standing, and coursework chips
+- `projects` — set `featured: true` to show it on the home grid, or `caseStudy: true` to group
+  it under "Case studies"; omit `image` for a placeholder tile; add `award` **or** `event` for the badge
+- `highlights` — hackathons & competitions (award rows show first; the rest expand on "Show all")
+- `skills`, `nav`, `socials`
 
 ## Adding a writeup (blog or interview)
 
@@ -96,7 +101,3 @@ Without them the form falls back to prompting visitors to email directly.
 
 Push to GitHub and import on [Vercel](https://vercel.com) — defaults work out of the box.
 Add the two environment variables above in the Vercel project settings for the contact form.
-
----
-
-_Design & build notes live in [`docs/superpowers/specs`](docs/superpowers/specs)._
